@@ -1,0 +1,23 @@
+# src/main/resources/application.yml (for Eureka Client)
+spring:
+  application:
+    name: AMAZON-SHOPPING-SERVICE # The name under which this service will register with Eureka
+eureka:
+  client:
+    # A Eureka client needs to register itself with the server
+    register-with-eureka: true
+    # A Eureka client needs to fetch the registry from the server to discover other services
+    fetch-registry: true
+    service-url:
+      # The default zone points to the Eureka server's URL
+      defaultZone: http://localhost:8761/eureka/ # Corrected: ensure http:// is present
+  instance:
+    # This hostname is used by Eureka to register the instance.
+    # For local development, 'localhost' is fine. In deployed environments, this might be a real hostname or IP.
+    hostname: localhost
+    # Optional: How often the client sends heartbeats to the server (in seconds)
+    # lease-renewal-interval-in-seconds: 30
+    # Optional: How long the server waits for a renewal before evicting (in seconds)
+    # lease-expiration-duration-in-seconds: 90
+server:
+  port: 9999 # The port on which your Payment Service will run
